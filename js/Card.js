@@ -32,4 +32,4 @@ Card.prototype = {
 	        }
 	    });
 	}
-}
+};
