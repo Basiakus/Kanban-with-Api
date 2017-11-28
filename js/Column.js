@@ -19,7 +19,7 @@ function Column(id, name) {
 		});
 
 		columnAddCard.click(function(event) {
-			var cardName = prompt("Wpisy nayw karty: ");
+			var cardName = prompt("Wpisz naywę karty: ");
 			event.preventDefault();
 			self.createCard(new Card(cardName));
 			$.ajax({
@@ -29,8 +29,9 @@ function Column(id, name) {
 					name: cardName,
 					bootcamp_kanban_column_id: self.id
 				},
-				success: function() {
-					var card = new Card(this.id, cardName);
+				success: function(response) {
+					var card = new Card(response.id, cardName);
+					self.createCard(card);
 				}
 			});
 		});
