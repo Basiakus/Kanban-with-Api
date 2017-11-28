@@ -20,20 +20,23 @@ function Column(id, name) {
 
 		columnAddCard.click(function(event) {
 			var cardName = prompt("Wpisz naywę karty: ");
-			event.preventDefault();
-			//self.createCard(new Card(cardName)); ????
-			$.ajax({
-				url: baseUrl + '/card',
-				method: 'POST',
-				data: {
-					name: cardName,
-					bootcamp_kanban_column_id: self.id
-				},
-				success: function(response) {
-					var card = new Card(response.id, cardName);
-					self.createCard(card);
-				}
-			});
+
+			if (cardName != null) {
+				event.preventDefault();
+				//self.createCard(new Card(cardName)); ????
+				$.ajax({
+					url: baseUrl + '/card',
+					method: 'POST',
+					data: {
+						name: cardName,
+						bootcamp_kanban_column_id: self.id
+					},
+					success: function(response) {
+						var card = new Card(response.id, cardName);
+						self.createCard(card);
+					}
+				});
+			}
 		});
 
 		// KONSTRUOWANIE ELEMENTU KOLUMNY

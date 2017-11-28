@@ -7,9 +7,10 @@ var board = {
   element: $('#board .column-container')
 };
 
-$('.create-column')
-  .click(function() {
-    var columnName = prompt('Enter a column name');
+$('.create-column').click(function() {
+  var columnName = prompt('Enter a column name');
+
+  if (columnName != null) {
     $.ajax({
       url: baseUrl + '/column',
       method: 'POST',
@@ -21,7 +22,8 @@ $('.create-column')
         board.createColumn(column);
       }
     });
-  });
+  }
+});
 
 function initSortable() {
   $('.card-list').sortable({
