@@ -21,7 +21,7 @@ function Column(id, name) {
 		columnAddCard.click(function(event) {
 			var cardName = prompt("Wpisz naywę karty: ");
 			event.preventDefault();
-			self.createCard(new Card(cardName));
+			//self.createCard(new Card(cardName)); ????
 			$.ajax({
 				url: baseUrl + '/card',
 				method: 'POST',
